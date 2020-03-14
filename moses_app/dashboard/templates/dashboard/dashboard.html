@@ -78,9 +78,9 @@
     <table id="table">
         <thead>
               <tr>
-                <th data-field="0"></th>
-                <th data-field="1"></th>
-                <th data-field="2"></th>
+                {% for i in range(num_cols) %}
+                 <th data-field="{{ i }}"></th>
+                {% endfor %}
             </tr>
         </thead>
     </table>

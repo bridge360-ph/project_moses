@@ -60,11 +60,15 @@ def dashboard():
     df = df.groupby(by='Hospital Name').last().T.reset_index(drop=False)
     df.rename(columns={'index':'Hospital Name'}, inplace=True)
     df = df.T.reset_index().T
-    df.columns = range(len(df.columns))
+
+    num_cols = len(df.columns)
+    df.columns = range(num_cols)
     df.to_csv('table.csv')
 
     table = df.to_dict()
     table = [{str(k):str(list(v.values())[i]) for k,v in table.items()} for i in range(len(df))]
     hospital_tables = table
 
-    return render_template('dashboard.html', hospital_tables=json.dumps(hospital_tables))
+    return render_template('dashboard.html',
+                    hospital_tables=json.dumps(hospital_tables),
+                    num_cols=num_cols)
