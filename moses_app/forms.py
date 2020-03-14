@@ -9,12 +9,12 @@ from wtforms.validators import DataRequired, email, EqualTo
 from wtforms import ValidationError
 
 class LoginForm(FlaskForm):
-    email = StringField('Hospital Email', validators = [DataRequired(), email()])
-    password = PasswordField("Password", validators=[DataRequired()])
+    hospital_user_name = StringField('Hospital Username', default="", validators = [DataRequired()])
+    password = PasswordField("Password", default="", validators=[DataRequired()])
     submit = SubmitField('Log in')
 
 class RegistrationForm(FlaskForm):
-    hospital_name = StringField("Hospital Name")
+    hospital_name = StringField("Hospital Name", default="Hospital Name")
     hospital_address = StringField("Address")
     hospital_website = StringField("Website")
     hospital_contact_num = IntegerField("Contact Number")

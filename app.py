@@ -1,10 +1,25 @@
 from moses_app import app, db
-from flask import render_template, redirect, request, url_for, flash, abort
+from flask import render_template, redirect, request, url_for, flash, abort, session
 from flask_login import login_user, login_required, logout_user
 from moses_app.models import Hospitals
+from moses_app import models
 from moses_app.forms import LoginForm, RegistrationForm
 
 # below are the backend of each html
+
+# dashboard is the main website
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    hospital_tables = models.Hospitals.query.all()
+    hospital_id = session.get('hospital_id', None)
+    current_hospital_table = models.Hospitals.query.filter_by(hospital_id=hospital_id).first()
+    return render_template('dashboard.html', hospital_tables=hospital_tables,
+                    current_hospital_table=current_hospital_table)
 
 @app.route('/logout')
 @login_required
@@ -13,23 +28,27 @@ def logout():
     flash("You logged out!")
     return redirect(url_for('index'))
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
+@app.route('/login', methods=['GET', 'POST'])
+def login():
     form = LoginForm()
+    print('ok0')
     if form.validate_on_submit():
-        hospital_email = form.email.data
-        user = Hospitals.query.filter_by(email =hospital_email).first()
+        print('ok1')
+        hospital_user_name = form.hospital_user_name.data
+        user = Hospitals.query.filter_by(hospital_user_name =hospital_user_name).first()
         if user is not None and user.check_password(form.password.data):
+            print('ok2')
             login_user(user)
             flash('Logged in successfully')
 
             next = request.args.get('next')
             print(next)
             if next == None or not next[0] == '/':
-                next = url_for('hospital_info')
+                print('ok3')
+                next = url_for('hospital_info.hospital_info')
 
             return redirect(next)
-    return render_template('index.html', form=form)
+    return render_template('login.html', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -54,18 +73,16 @@ def register():
             db.session.add(user)
             db.session.commit()
 
-            print('ok3')
-
             print('added user')
             flash("Thanks for registration!")
 
             # go to services if registered
             return redirect(url_for('index'))
-
         else:
             warning = 'user already in the database'
 
     return render_template('register.html', form=form, warning=warning)
 
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5100)
+    app.run(debug=True, port=5000)

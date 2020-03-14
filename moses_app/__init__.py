@@ -11,7 +11,7 @@ login_manager = LoginManager()
 # create Flask application
 app = Flask(__name__)
 # this is for security
-app.config['SECRET_KEY'] = 'princejudecarlo'
+app.config['SECRET_KEY'] = 'bridge360PH'
 # get the base directory of __file__ --> app.py
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -27,5 +27,5 @@ Migrate(app, db)
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-from moses_app.data.views import data_blueprint
-app.register_blueprint(data_blueprint, url_prefix='/')
+from moses_app.hospital_info.views import hospital_info_blueprint
+app.register_blueprint(hospital_info_blueprint, url_prefix='/')

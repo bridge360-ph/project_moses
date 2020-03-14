@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel="stylesheet" href="/static/css/bulma.min.css">
+    <link rel='stylesheet' href="/static/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+        #main-logo {
+            margin-top: 20px;
+            height: 300px;
+            width: auto;
+        }
+        #bir-logo {
+            margin-top: 10px;
+            height: 80px;
+            width: auto;
+        }
+        button {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        #text-1 {
+            /* font-weight: bold; */
+            font-size: 40px;
+        }
+    </style>
+  </head>
+
+
+  <body>
+    <div class='container'>
+      <div id="text-1">Hospital Information Portal</div>
+      <h1>HOSPITAL NAME HERE</h1>
+    <form method="POST">
+      <div class='row'>
+        <div class='column'>
+          {{ form.hidden_tag() }}
+          {{ form.num_confirmed_covid.label }} {{ form.num_confirmed_covid(class_="form-control") }}
+          {{ form.num_pui.label }} {{ form.num_pui(class_="form-control") }}
+        </div>
+        <div class='column'>
+          {{ form.hidden_tag() }}
+        </div>
+        <div class='column'>
+          {{ form.hidden_tag() }}
+        </div>
+      </div>
+
+      {{ form.submit(class="btn-success") }}
+    </form>
+  </div>
+  </body>
+</html>
+
+{% endblock %}

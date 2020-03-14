@@ -34,19 +34,31 @@
     <div class="container">
         <img id="main-logo" src='static/img/logo.jpg'>
         <div id="text-1">Welcome to Project Moses</div>
-          <div class="row">
-            <div class="column">
-            <a href="{{url_for('dashboard')}}">
-              <div id="text-1">Dashboard</div>
-            </a>
-            </div>
-            <div class="column">
-            <a href="{{url_for('hospital_info.hospital_info')}}">
-              <div id="text-1">Hospital Portal</div>
-            </a>
-            </div>
+        <div class="container">
+          <div class='row'>
+          <div class='column'>
           </div>
-      </div>
+          <div class='column'>
+            <form method="POST">
+              {{form.hidden_tag()}}
+              {{form.hospital_user_name.label}}{{form.hospital_user_name(class_="form-control")}}
+              {{form.password.label}}{{form.password(class_="form-control")}}
+              <br>
+              {{form.submit(class_="btn-success")}}
+
+              <!-- For Bridge 360 -->
+              <br>
+              <br>
+              <a href="{{url_for('register')}}">Register a Hospital</a>
+            </form>
+          </div>
+          <div class='column'>
+          </div>
+        </div>
+        </div>
+
+    </div>
+
 </body>
 
 {% endblock %}

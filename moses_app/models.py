@@ -37,3 +37,44 @@ class Hospitals(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.hospital_pw_hash, password)
+
+
+class HospitalInfo(db.Model):
+    __tablename__ = 'HospitalInfo'
+
+    # relationship with registration
+    hospital_id = db.Column(db.Integer, db.ForeignKey('Hospitals.id'))
+
+    id = db.Column(db.Integer, primary_key=True) # unique identifier for the row
+    num_confirmed_covid = db.Column(db.Integer())
+    num_pui = db.Column(db.Integer())
+
+    num_face_masks = db.Column(db.Integer())
+    num_covid_kits = db.Column(db.Integer())
+    num_respirators = db.Column(db.Integer())
+
+    num_doctors_for_covid = db.Column(db.Integer())
+    num_nurses_for_covid = db.Column(db.Integer())
+    num_medstaff_for_covid = db.Column(db.Integer())
+
+    capacity_quarantine = db.Column(db.Boolean())
+    notes = db.Column(db.String())
+
+    def __init__(self, hospital_id, num_confirmed_covid, num_pui,
+                num_face_masks, num_covid_kits, num_respirators,
+                num_doctors_for_covid, num_nurses_for_covid, num_medstaff_for_covid,
+                capacity_quarantine, notes):
+        self.hospital_id = hospital_id
+        self.num_confirmed_covid = num_confirmed_covid
+        self.num_pui = num_pui
+
+        self.num_face_masks = num_face_masks
+        self.num_covid_kits = num_covid_kits
+        self.num_respirators = num_respirators
+
+        self.num_doctors_for_covid = num_doctors_for_covid
+        self.num_nurses_for_covid = num_nurses_for_covid
+        self.num_medstaff_for_covid = num_medstaff_for_covid
+
+        self.capacity_quarantine = capacity_quarantine
+        self.notes = notes
