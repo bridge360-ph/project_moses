@@ -58,7 +58,7 @@ def dashboard():
 
     df = df.groupby(by='Hospital Name').last().T.reset_index(drop=False)
     df = df.astype(str)
-    df.columns = [0, 1, 2]
+    df.columns = range(len(df.columns))
     df.to_csv('table.csv')
 
     table = df.to_dict()
