@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel="stylesheet" href="/static/css/bulma.min.css">
+    <link rel='stylesheet' href="/static/css/style.css">
+
+    <style>
+        #main-logo {
+            margin-top: 20px;
+            height: 300px;
+            width: auto;
+        }
+        #bir-logo {
+            margin-top: 10px;
+            height: 80px;
+            width: auto;
+        }
+        button {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        #text-1 {
+            /* font-weight: bold; */
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img id="main-logo" src='static/img/logo.jpg'>
+        <div id="text-1">Welcome to Project Moses</div>
+        <div class="container">
+            <form method="POST">
+              {{form.hidden_tag()}}
+              {{form.email.label}}{{form.email(class_="form-control")}}
+              {{form.password.label}}{{form.password(class_="form-control")}}
+              <br>
+              {{form.submit(class_="btn-success")}}
+
+              <!-- For Bridge 360 -->
+              <br>
+              <br>
+              <a href="{{url_for('register')}}">Register a Hospital</a>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+{% endblock %}

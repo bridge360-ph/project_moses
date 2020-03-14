@@ -1,0 +1,19 @@
+.navbar-main {
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    /* background-color: brown; */
+    width: 100%;
+    /* padding-right: -50px; */
+    height: 60px;
+    line-height: 0;
+    /* float: left; */
+    overflow: hidden;
+}
+
+body {
+    /* background-color: cyan; */
+    /* overflow-y: hidden; */
+    text-align: center;
+}
