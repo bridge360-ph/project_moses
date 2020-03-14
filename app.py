@@ -44,11 +44,10 @@ def login():
             return redirect(next)
     return render_template('login.html', form=form)
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register_secret', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     warning = ''
-    print('ok0')
     if form.validate_on_submit():
         user = Hospitals(hospital_name = form.hospital_name.data,
                     hospital_address = form.hospital_address.data,
@@ -58,10 +57,8 @@ def register():
                     hospital_email = form.hospital_email.data,
                     password = form.password.data)
 
-        print('ok1')
         count_user_name = Hospitals.query.filter_by(hospital_user_name=form.hospital_user_name.data).count()
         count_email = Hospitals.query.filter_by(hospital_email=form.hospital_email.data).count()
-        print('ok2')
         if  count_user_name < 1 and count_email < 1:
             # add to database
             db.session.add(user)
@@ -76,6 +73,37 @@ def register():
             warning = 'user already in the database'
 
     return render_template('register.html', form=form, warning=warning)
+
+# FOR DELETING USERS
+# @app.route('/delete_secret', methods=['GET', 'POST'])
+# def register():
+#     form = DeletionForm()
+#     warning = ''
+#     if form.validate_on_submit():
+#         user = Hospitals(hospital_name = form.hospital_name.data,
+#                     hospital_address = form.hospital_address.data,
+#                     hospital_website = form.hospital_website.data,
+#                     hospital_contact_num = form.hospital_contact_num.data,
+#                     hospital_user_name = form.hospital_user_name.data,
+#                     hospital_email = form.hospital_email.data,
+#                     password = form.password.data)
+#
+#         count_user_name = Hospitals.query.filter_by(hospital_user_name=form.hospital_user_name.data).count()
+#         count_email = Hospitals.query.filter_by(hospital_email=form.hospital_email.data).count()
+#         if  count_user_name < 1 and count_email < 1:
+#             # add to database
+#             db.session.add(user)
+#             db.session.commit()
+#
+#             print('added user')
+#             flash("Thanks for registration!")
+#
+#             # go to services if registered
+#             return redirect(url_for('index'))
+#         else:
+#             warning = 'user already in the database'
+#
+#     return render_template('register.html', form=form, warning=warning)
 
 
 if __name__ == '__main__':

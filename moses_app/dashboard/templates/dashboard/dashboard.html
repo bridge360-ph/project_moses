@@ -14,11 +14,14 @@
     <!-- var mydata = [{{ hospital_tables }}]; -->
     <script>
       var $table = $('#table');
-      var mydata = [{{ hospital_tables }}];
-
+      // var mydata = [{'0': 'a', '1': 'b'}, {'0': 'a', '1': 'ad'}, {'0': '001', '1': 'bw'}, {'0': '1.0', '1': '0.0'}, {'0': 'a@gmail.com', '1': 'b@gs.com'}, {'0': '3', '1': '5'}, {'0': '2', '1': '23'}, {'0': 'nan', '1': '23.0'}, {'0': 'None', '1': 'None'}, {'0': 'None', '1': 'None'}, {'0': 'None', '1': 'None'}, {'0': 'None', '1': 'None'}, {'0': 'None', '1': 'None'}, {'0': 'Unknown', '1': 'Unknown'}, {'0': '', '1': ''}, {'0': '2020-03-15 03:49:09.157404', '1': '2020-03-15 04:41:28.435751'}];
+      var mydata = JSON.parse('{{ hospital_tables | safe}}');
       $(function () {
       $('#table').bootstrapTable({
-          data: mydata
+          data: mydata,
+          formatLoadingMessage: function() {
+            return '';
+    }
         });
       });
 
@@ -33,6 +36,11 @@
             padding-top: 20px;
             font-size: 40px;
             font-weight: bold;
+        }
+        #main-container {
+            /* margin-right: 300px;
+            margin-left: 300px; */
+            width: 1000px;
         }
         form {
             padding-top: 60px;
@@ -65,14 +73,14 @@
   </head>
   <body>
     <div class='container'>
-    <h1>dashboard</h1>
-    {{ hospital_tables }}
-    <table id="table" data-height="460">
+    <div id='text-1'>Dashboard</div>
+    <!-- {{ hospital_tables | safe}} -->
+    <table id="table">
         <thead>
-            <tr>
-                <th data-field="hospital_name">Hospital</th>
-                <th data-field="hospital_address">Address</th>
-                <th data-field="hospital_website">Website</th>
+              <tr>
+                <th data-field="0"></th>
+                <th data-field="1"></th>
+                <th data-field="2"></th>
             </tr>
         </thead>
     </table>

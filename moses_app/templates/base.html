@@ -13,7 +13,7 @@
       <li class='nav-link'><a href="{{url_for('index')}}">Home</a></li>
       <li class='nav-link'><a href="{{url_for('dashboard.dashboard')}}">Dashboard</a></li>
       {% if current_user.is_authenticated %}
-      <li class='nav-link'><a href="{{url_for('hospital_info.hospital_info')}}">Hospital Portal</a></li>
+      <li class='nav-link'><a href="{{url_for('hospital_info.hospital_info')}}">Information Portal</a></li>
       <li class='nav-link'><a href="{{url_for('logout')}}">Log Out</a></li>
       {% else %}
       {% endif %}

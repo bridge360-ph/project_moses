@@ -7,6 +7,7 @@ from moses_app import db
 from moses_app.models import HospitalInfo, Hospitals
 from moses_app import models
 import datetime
+import json
 import pandas as pd
 
 dashboard_blueprint = Blueprint('dashboard', __name__,
@@ -55,11 +56,13 @@ def dashboard():
             'Num Med Staff Handling', 'Capacity to Quarantine', 'Notes',
             'Last Updated'])
 
-    df = df.groupby(by='Hospital Name').last().reset_index(drop=False)
-    df.to_html('moses_app/templates/table.html')
+    df = df.groupby(by='Hospital Name').last().T.reset_index(drop=False)
+    df = df.astype(str)
+    df.columns = [0, 1, 2]
+    df.to_csv('table.csv')
 
     table = df.to_dict()
-    # table = {k:list(v.values())[0] for k,v in table.items() }
+    table = [{str(k):str(list(v.values())[i]) for k,v in table.items()} for i in range(len(df))]
     hospital_tables = table
 
-    return render_template('dashboard.html', hospital_tables=hospital_tables)
+    return render_template('dashboard.html', hospital_tables=json.dumps(hospital_tables))
