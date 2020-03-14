@@ -14,7 +14,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Log in')
 
 class RegistrationForm(FlaskForm):
-    hospital_name = StringField("Hospital Name", default="Hospital Name")
+    hospital_name = StringField("Hospital Name", default="")
     hospital_address = StringField("Address")
     hospital_website = StringField("Website")
     hospital_contact_num = IntegerField("Contact Number")

@@ -12,7 +12,10 @@ def load_user(user_id):
 
 # make a table Registration of Hospitals
 class Hospitals(db.Model, UserMixin):
-    __tablename__ = 'Hospitals'
+    # relationship with HospitalInfo
+    # uselist=False means we only return one set of values
+    hospitalinfo = db.relationship('HospitalInfo', backref='hospital',
+                            uselist = True) #lazy=True
 
     id = db.Column(db.Integer, primary_key=True) # unique identifier for the row
     hospital_name = db.Column(db.String(64))
@@ -40,12 +43,13 @@ class Hospitals(db.Model, UserMixin):
 
 
 class HospitalInfo(db.Model):
-    __tablename__ = 'HospitalInfo'
-
+    __tablename__ = 'hospitalinfo'
     # relationship with registration
-    hospital_id = db.Column(db.Integer, db.ForeignKey('Hospitals.id'))
+    hospital_id = db.Column(db.Integer, db.ForeignKey('hospitals.id'))
 
     id = db.Column(db.Integer, primary_key=True) # unique identifier for the row
+    timestamp = db.Column(db.String(64))
+
     num_confirmed_covid = db.Column(db.Integer())
     num_pui = db.Column(db.Integer())
 
@@ -57,13 +61,15 @@ class HospitalInfo(db.Model):
     num_nurses_for_covid = db.Column(db.Integer())
     num_medstaff_for_covid = db.Column(db.Integer())
 
-    capacity_quarantine = db.Column(db.Boolean())
+    capacity_quarantine = db.Column(db.String(64))
     notes = db.Column(db.String())
 
-    def __init__(self, hospital_id, num_confirmed_covid, num_pui,
+    def __init__(self, timestamp, hospital_id, num_confirmed_covid, num_pui,
                 num_face_masks, num_covid_kits, num_respirators,
                 num_doctors_for_covid, num_nurses_for_covid, num_medstaff_for_covid,
                 capacity_quarantine, notes):
+
+        self.timestamp = timestamp
         self.hospital_id = hospital_id
         self.num_confirmed_covid = num_confirmed_covid
         self.num_pui = num_pui

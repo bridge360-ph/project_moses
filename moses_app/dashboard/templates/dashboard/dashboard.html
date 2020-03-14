@@ -6,27 +6,33 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <link rel="stylesheet" href="/static/css/bulma.min.css">
     <link rel='stylesheet' href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- var mydata = [{{ hospital_tables }}]; -->
+    <script>
+      var $table = $('#table');
+      var mydata = [{{ hospital_tables }}];
+
+      $(function () {
+      $('#table').bootstrapTable({
+          data: mydata
+        });
+      });
+
+    </script>
     <style>
         #main-logo {
             margin-top: 20px;
             height: 300px;
             width: auto;
         }
-        #bir-logo {
-            margin-top: 60px;
-            height: 80px;
-            width: auto;
-        }
         #text-1 {
             padding-top: 20px;
             font-size: 40px;
             font-weight: bold;
-        }
-        #main-container {
-            /* margin-right: 300px;
-            margin-left: 300px; */
-            width: 1000px;
         }
         form {
             padding-top: 60px;
@@ -58,11 +64,19 @@
     <title></title>
   </head>
   <body>
+    <div class='container'>
     <h1>dashboard</h1>
     {{ hospital_tables }}
-    <br>
-    <br>
-    {{ current_hospital_table }}
+    <table id="table" data-height="460">
+        <thead>
+            <tr>
+                <th data-field="hospital_name">Hospital</th>
+                <th data-field="hospital_address">Address</th>
+                <th data-field="hospital_website">Website</th>
+            </tr>
+        </thead>
+    </table>
+    </div>
   </body>
 </html>
 

@@ -33,24 +33,30 @@
   <body>
     <div class='container'>
       <div id="text-1">Hospital Information Portal</div>
-      <h1>HOSPITAL NAME HERE</h1>
-    <form method="POST">
+      <h1>{{hospital_name}}</h1>
+      <p>Time: {{timestamp}} </p>
       <div class='row'>
         <div class='column'>
-          {{ form.hidden_tag() }}
+        </div>
+          <div class='column'>
+            <form method="POST">
+            {{ form.hidden_tag() }}
+            <!-- {{ form.csrf_token() }} -->
           {{ form.num_confirmed_covid.label }} {{ form.num_confirmed_covid(class_="form-control") }}
           {{ form.num_pui.label }} {{ form.num_pui(class_="form-control") }}
-        </div>
-        <div class='column'>
-          {{ form.hidden_tag() }}
-        </div>
-        <div class='column'>
-          {{ form.hidden_tag() }}
-        </div>
-      </div>
-
-      {{ form.submit(class="btn-success") }}
-    </form>
+          {{ form.num_face_masks.label }} {{ form.num_face_masks(class_="form-control") }}
+          {{ form.num_covid_kits.label }} {{ form.num_covid_kits(class_="form-control") }}
+          {{ form.num_respirators.label }} {{ form.num_respirators(class_="form-control") }}
+          {{ form.num_doctors_for_covid.label }} {{ form.num_doctors_for_covid(class_="form-control") }}
+          {{ form.num_nurses_for_covid.label }} {{ form.num_nurses_for_covid(class_="form-control") }}
+          {{ form.num_medstaff_for_covid.label }} {{ form.num_medstaff_for_covid(class_="form-control") }}
+          {{ form.capacity_quarantine.label }} {{ form.capacity_quarantine() }}
+          {{ form.notes.label }} {{ form.notes(class_="form-control") }}
+          {{ form.submit(class="btn-success") }}
+          </form>
+          </div>
+          <div class='column'>
+          </div>
   </div>
   </body>
 </html>

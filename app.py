@@ -1,25 +1,19 @@
 from moses_app import app, db
 from flask import render_template, redirect, request, url_for, flash, abort, session
 from flask_login import login_user, login_required, logout_user
-from moses_app.models import Hospitals
+from moses_app.models import Hospitals, HospitalInfo
 from moses_app import models
 from moses_app.forms import LoginForm, RegistrationForm
 
 # below are the backend of each html
 
-# dashboard is the main website
-
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/dashboard', methods=['GET', 'POST'])
-def dashboard():
-    hospital_tables = models.Hospitals.query.all()
-    hospital_id = session.get('hospital_id', None)
-    current_hospital_table = models.Hospitals.query.filter_by(hospital_id=hospital_id).first()
-    return render_template('dashboard.html', hospital_tables=hospital_tables,
-                    current_hospital_table=current_hospital_table)
+@app.route('/table')
+def table():
+    return render_template('table.html')
 
 @app.route('/logout')
 @login_required

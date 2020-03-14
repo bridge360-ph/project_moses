@@ -5,6 +5,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+# from flask_wtf.csrf import CSRFProtect
 
 # initiate login manager
 login_manager = LoginManager()
@@ -14,6 +15,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'bridge360PH'
 # get the base directory of __file__ --> app.py
 basedir = os.path.abspath(os.path.dirname(__file__))
+
+# CSRF
+# csrf = CSRFProtect(app)
+
 
 # create database
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'+os.path.join(basedir,'data.sqlite')
@@ -28,4 +33,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 from moses_app.hospital_info.views import hospital_info_blueprint
+from moses_app.dashboard.views import dashboard_blueprint
+
 app.register_blueprint(hospital_info_blueprint, url_prefix='/')
+app.register_blueprint(dashboard_blueprint, url_prefix='/')
