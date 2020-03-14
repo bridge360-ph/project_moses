@@ -1,16 +1,17 @@
 ,0,1,2
+Hospital Name,Hospital Name,Makati Med,QC Hospital
 0,Address,Caloocan,QC 
-1,Website,https://www.makatimed.net.ph/,samplewebsite.com
-2,Contact Num,0,91
-3,Email,sample_email@email.com,sample@email.com
-4,Num Confirmed COVID,3,25
-5,Num PUI,20,50
-6,Num Face Mask,250,23
-7,Num COVID Kits,10,10
-8,Num Respirators,5,5
-9,Num Doctors Handling,5,5
-10,Num Nurses Handling,10,20
-11,Num Med Staff Handling,25,30
-12,Capacity to Quarantine,Y,Y
-13,Notes,Just a sample.,Sample text
+1,Num Confirmed COVID,3,25
+2,Num PUI,20,50
+3,Num Face Mask,250,23
+4,Num COVID Kits,10,10
+5,Num Respirators,5,5
+6,Num Doctors Handling,5,5
+7,Num Nurses Handling,10,20
+8,Num Med Staff Handling,25,30
+9,Capacity to Quarantine,Y,Y
+10,Notes,Just a sample.,Sample text
+11,Website,https://www.makatimed.net.ph/,samplewebsite.com
+12,Contact Num,0,91
+13,Email,sample_email@email.com,sample@email.com
 14,Last Updated,2020-03-15 05:57:45.855083,2020-03-15 05:59:45.917373

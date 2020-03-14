@@ -20,9 +20,6 @@ def dashboard():
     SELECT
         hospital_name
         , hospital_address
-        , hospital_website
-        , hospital_contact_num
-        , hospital_email
         , num_confirmed_covid
         , num_pui
         , num_face_masks
@@ -33,6 +30,9 @@ def dashboard():
         , num_medstaff_for_covid
         , capacity_quarantine
         , notes
+        , hospital_website
+        , hospital_contact_num
+        , hospital_email
         , timestamp
     FROM HospitalInfo a
     LEFT JOIN Hospitals b
@@ -49,15 +49,17 @@ def dashboard():
     #         'num_medstaff_for_covid', 'capacity_quarantine', 'notes',
     #         'timestamp'])
 
-    df = pd.DataFrame(table, columns=['Hospital Name', 'Address',
+    columns = ['Hospital Name', 'Address',
+    'Num Confirmed COVID', 'Num PUI', 'Num Face Mask', 'Num COVID Kits',
+    'Num Respirators', 'Num Doctors Handling', 'Num Nurses Handling',
+    'Num Med Staff Handling', 'Capacity to Quarantine', 'Notes',
             'Website', 'Contact Num', 'Email',
-            'Num Confirmed COVID', 'Num PUI', 'Num Face Mask', 'Num COVID Kits',
-            'Num Respirators', 'Num Doctors Handling', 'Num Nurses Handling',
-            'Num Med Staff Handling', 'Capacity to Quarantine', 'Notes',
-            'Last Updated'])
+            'Last Updated']
+    df = pd.DataFrame(table, columns=columns)
 
     df = df.groupby(by='Hospital Name').last().T.reset_index(drop=False)
-    df = df.astype(str)
+    df.rename(columns={'index':'Hospital Name'}, inplace=True)
+    df = df.T.reset_index().T
     df.columns = range(len(df.columns))
     df.to_csv('table.csv')
 
