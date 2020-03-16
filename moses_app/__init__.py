@@ -33,7 +33,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 from moses_app.hospital_info.views import hospital_info_blueprint
-from moses_app.dashboard.views import dashboard_blueprint
+from moses_app.hospital_stats_summary.views import hospital_stats_summary_blueprint
 
 app.register_blueprint(hospital_info_blueprint, url_prefix='/')
-app.register_blueprint(dashboard_blueprint, url_prefix='/')
+app.register_blueprint(hospital_stats_summary_blueprint, url_prefix='/')

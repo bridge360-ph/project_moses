@@ -16,6 +16,10 @@ def index():
 def public_info():
     return render_template('public_info.html')
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
 @app.route('/logout')
 @login_required
 def logout():

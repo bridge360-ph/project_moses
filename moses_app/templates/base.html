@@ -13,13 +13,14 @@
   </style>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md navbar-light bg-light">
     <!-- <a href="{{url_for('index')}}"><img src='static/img/logo.png'/></a> -->
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="container-fluid">
         <div class="navbar-nav">
           <a href="{{url_for('index')}}" class="nav-item nav-link active">Home</a>
-            <a href="{{url_for('dashboard.dashboard')}}" class="nav-item nav-link">Dashboard</a>
+            <a href="{{url_for('dashboard')}}" class="nav-item nav-link">Dashboard</a>
             <a href="{{url_for('public_info')}}" class="nav-item nav-link">Information Portal</a>
+            <a href="{{url_for('hospital_stats_summary.hospital_stats_summary')}}" class="nav-item nav-link">Hospitals Stats</a>            
             {% if current_user.is_authenticated %}
             <a href="{{url_for('hospital_info.hospital_info')}}" class="nav-item nav-link">Hospital Portal</a>
             {% else %}
@@ -33,21 +34,6 @@
         </div>
     </div>
 </nav>
-<!--
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class='container-fluid'>
-    <ul class='nav'>
-      <li class='nav-link'><a href="{{url_for('index')}}">Home</a></li>
-      <li class='nav-link'><a href="{{url_for('dashboard.dashboard')}}">Dashboard</a></li>
-      <li class='nav-link'><a href="{{url_for('public_info')}}">Information Portal</a></li>
-      {% if current_user.is_authenticated %}
-      <li class='nav-link'><a href="{{url_for('hospital_info.hospital_info')}}">Hospital Portal</a></li>
-      <li id="logout" class='nav-link'><a href="{{url_for('logout')}}">Log Out</a></li>
-      {% else %}
-      {% endif %}
-    </ul>
-  </div>
-</nav> -->
     {% block content %}
 
     {% endblock %}

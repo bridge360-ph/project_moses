@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel="stylesheet" href="/static/css/bulma.min.css">
+    <link rel='stylesheet' href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <style>
+        #main-logo {
+            margin-top: 20px;
+            height: 300px;
+            width: auto;
+        }
+        button {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        #text-1 {
+            /* font-weight: bold; */
+            font-size: 40px;
+        }
+
+        body {
+            margin: 0;            /* Reset default margin */
+        }
+        iframe {
+            display: block;       /* iframes are inline by default */
+            background: #000;
+            border: none;         /* Reset default border */
+            height: 100vh;        /* Viewport-relative units */
+            width: 100vw;
+        }
+
+    </style>
+
+  </head>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class='container-fluid'>
+    <div id='text-1'>DOH Dashboard</div>
+    <!-- <p id='text-3'>Soon</p> -->
+    <iframe src= 'https://ncovtracker.doh.gov.ph/'></iframe>
+    </div>
+  </body>
+</html>
+
+{% endblock %}

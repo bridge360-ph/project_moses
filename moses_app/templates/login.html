@@ -25,6 +25,9 @@
       max-width: 20%;
       height: auto;
     }
+    form{
+      font-size:150%;
+    }
     </style>
 </head>
 
@@ -40,7 +43,6 @@
           </div>
           <div class='column'>
             <form method="POST">
-              <br>
               <br>
               {{form.hidden_tag()}}
               {{form.hospital_user_name.label}}{{form.hospital_user_name(class_="form-control")}}

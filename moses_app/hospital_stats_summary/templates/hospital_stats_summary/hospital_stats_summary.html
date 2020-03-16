@@ -11,7 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <!-- var mydata = [{{ hospital_tables }}]; -->
+
+    <!-- FOR HOSPITAL DATA STATS -->
     <script>
       var $table = $('#table');
       // var mydata = [{'0': 'a', '1': 'b'}, {'0': 'a', '1': 'ad'}, {'0': '001', '1': 'bw'}, {'0': '1.0', '1': '0.0'}, {'0': 'a@gmail.com', '1': 'b@gs.com'}, {'0': '3', '1': '5'}, {'0': '2', '1': '23'}, {'0': 'nan', '1': '23.0'}, {'0': 'None', '1': 'None'}, {'0': 'None', '1': 'None'}, {'0': 'None', '1': 'None'}, {'0': 'None', '1': 'None'}, {'0': 'None', '1': 'None'}, {'0': 'Unknown', '1': 'Unknown'}, {'0': '', '1': ''}, {'0': '2020-03-15 03:49:09.157404', '1': '2020-03-15 04:41:28.435751'}];
@@ -26,43 +27,39 @@
       });
 
     </script>
+
     <style>
         #main-logo {
             margin-top: 20px;
             height: 300px;
             width: auto;
         }
-        #text-1 {
-            padding-top: 20px;
-            font-size: 40px;
-            font-weight: bold;
-        }
-        #main-container {
-            /* margin-right: 300px;
-            margin-left: 300px; */
-            width: 1000px;
-        }
-        form {
-            padding-top: 60px;
-        }
         button {
-            margin: 0;
-            padding: 0;
+            margin-top: 30px;
+            margin-bottom: 30px;
         }
-        .inline {
-            display: inline-block;
-        }
-        #text-2 {
-            width: 500px;
-            word-wrap: break-word;
-            text-align: justify;
+        #text-1 {
+            /* font-weight: bold; */
+            font-size: 40px;
         }
         #text-3 {
-            padding-top: 10px;
-            width: 500px;
-            text-align: center;
+            /* font-weight: bold; */
+            font-size: 30px;
         }
-      </style>
+
+        body {
+            margin: 0;            /* Reset default margin */
+        }
+        iframe {
+            display: block;       /* iframes are inline by default */
+            background: #000;
+            border: none;         /* Reset default border */
+            height: 100vh;        /* Viewport-relative units */
+            width: 100vw;
+        }
+
+    </style>
+
   </head>
 
 <!DOCTYPE html>
@@ -72,10 +69,12 @@
     <title></title>
   </head>
   <body>
-    <div class='container'>
-    <div id='text-1'>Dashboard</div>
-    <!-- {{ hospital_tables | safe}} -->
-    <table id="table">
+    <div class='container-fluid'>
+    <div id='text-1'>Hospital Statistics Summary</div>
+    <p id='text-3'>Soon</p>
+
+    <!-- FOR HOSPITAL DATA STATS -->
+    <!-- <table id="table">
         <thead>
               <tr>
                 {% for i in range(num_cols) %}
@@ -83,7 +82,7 @@
                 {% endfor %}
             </tr>
         </thead>
-    </table>
+    </table> -->
     </div>
   </body>
 </html>

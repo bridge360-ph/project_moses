@@ -39,10 +39,15 @@
         </div>
         <br>
         <div class='row-center'>
-            <a href="{{url_for('dashboard.dashboard')}}">
+            <a href="{{url_for('dashboard')}}">
               <div id="text-1">Dashboard</div>
             </a>
-            <br>
+            <a href="{{url_for('public_info')}}">
+              <div id="text-1">Information Portal</div>
+            </a>
+            <a href="{{url_for('hospital_stats_summary.hospital_stats_summary')}}">
+              <div id="text-1">Hospitals Statistics</div>
+            </a>
             <a href="{{url_for('hospital_info.hospital_info')}}">
               <div id="text-1">Hospital Portal</div>
             </a>

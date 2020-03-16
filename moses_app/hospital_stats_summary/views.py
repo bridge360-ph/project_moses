@@ -1,4 +1,4 @@
-# moses_app/dashboard/views.py
+# moses_app/hospital_stats_summary/views.py
 
 from flask import Blueprint, render_template, redirect, url_for, session
 from flask_login import login_user, login_required, logout_user
@@ -10,11 +10,11 @@ import datetime
 import json
 import pandas as pd
 
-dashboard_blueprint = Blueprint('dashboard', __name__,
-                                        template_folder='templates/dashboard')
+hospital_stats_summary_blueprint = Blueprint('hospital_stats_summary', __name__,
+                                        template_folder='templates/hospital_stats_summary')
 
-@dashboard_blueprint.route('/dashboard', methods=['GET', 'POST'])
-def dashboard():
+@hospital_stats_summary_blueprint.route('/hospital_stats_summary', methods=['GET', 'POST'])
+def hospital_stats_summary():
 
     sql_query = """
     SELECT
@@ -81,6 +81,6 @@ def dashboard():
     table = [{str(k):str(list(v.values())[i]) for k,v in table.items()} for i in range(len(df))]
     hospital_tables = table
 
-    return render_template('dashboard.html',
+    return render_template('hospital_stats_summary.html',
                     hospital_tables=json.dumps(hospital_tables),
                     num_cols=num_cols)
