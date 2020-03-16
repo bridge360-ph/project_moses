@@ -1,17 +1,24 @@
-,0
-Hospital Name,Hospital Name
-0,Address
-1,Num Confirmed COVID
-2,Num PUI
-3,Num Face Mask
-4,Num COVID Kits
-5,Num Respirators
-6,Num Doctors Handling
-7,Num Nurses Handling
-8,Num Med Staff Handling
-9,Capacity to Quarantine
-10,Notes
-11,Website
-12,Contact Num
-13,Email
-14,Last Updated
+,0,1
+Hospital Name,Hospital Name,sample_hospital
+0,Status,accepting
+1,Address,sample_address
+2,Contact Num,sample_contact
+3,Num Confirmed COVID,1
+4,Num PUI,2
+5,Supplies Requested,sample request
+6,Num COVID Kits,3
+7,Num Face Mask,4
+8,Num Surgical Gloves,5
+9,Num Alcohol,6
+10,Num Face Shield,7
+11,Num Hoods,8
+12,Num Shoe Covers,9
+13,Num Respirators,10
+14,Num Doctors Assigned,11
+15,Num Nurses Assigned,12
+16,Num Med Staff Assigned,13
+17,Capacity to Quarantine,Y
+18,Notes,Stuff
+19,Website,sample_website
+20,Email,sample_email@email.com
+21,Last Updated,2020-03-17 02:30:35.425450

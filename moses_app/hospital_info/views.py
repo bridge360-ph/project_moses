@@ -27,13 +27,18 @@ def hospital_info():
         timestamp = datetime.datetime.now()
         print("OKA")
 
+        status = form.status.data
         num_confirmed_covid = form.num_confirmed_covid.data
         num_pui = form.num_pui.data
 
-        print(num_confirmed_covid)
-
+        request_supplies = form.request_supplies.data
         num_face_masks = form.num_face_masks.data
         num_covid_kits = form.num_covid_kits.data
+        num_surgical_gloves = form.num_surgical_gloves.data
+        num_alcohol = form.num_alcohol.data
+        num_face_shield = form.num_face_shield.data
+        num_hoods = form.num_hoods.data
+        num_shoe_covers = form.num_shoe_covers.data
         num_respirators = form.num_respirators.data
 
         num_doctors_for_covid = form.num_doctors_for_covid.data
@@ -46,8 +51,10 @@ def hospital_info():
         print("OK1")
 
         # get new registration entry for database
-        new_Application = HospitalInfo(timestamp, hospital_id, num_confirmed_covid, num_pui,
-                    num_face_masks, num_covid_kits, num_respirators,
+        new_Application = HospitalInfo(timestamp, hospital_id, status, num_confirmed_covid, num_pui,
+                    request_supplies, num_covid_kits, num_face_masks,
+                    num_surgical_gloves, num_alcohol, num_face_shield,
+                    num_hoods, num_shoe_covers, num_respirators,
                     num_doctors_for_covid, num_nurses_for_covid, num_medstaff_for_covid,
                     capacity_quarantine, notes)
 

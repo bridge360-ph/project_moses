@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel="stylesheet" href="/static/css/bulma.min.css">
+    <link rel='stylesheet' href="/static/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+        #main-logo {
+            margin-top: 20px;
+            height: 300px;
+            width: auto;
+        }
+        button {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        #text-1 {
+            /* font-weight: bold; */
+            font-size: 40px;
+        }
+
+        body {
+            margin: 0;            /* Reset default margin */
+        }
+        iframe {
+            display: block;       /* iframes are inline by default */
+            background: #000;
+            border: none;         /* Reset default border */
+            height: 100vh;        /* Viewport-relative units */
+            width: 100vw;
+        }
+
+    </style>
+  </head>
+
+
+  <body>
+    <div class='container'>
+      <div id="text-1">Public Information Portal</div>
+      <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_yzYuSZMgBfe0H1l4w54DZ45sqxj6EEK5bB-n6h5iFWA3_4C-XHqu22-yXwcQIpwv-nbHrPSqt5SN/pubhtml?gid=2113110150&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+
+    </div>
+  </body>
+
+{% endblock %}

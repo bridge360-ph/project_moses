@@ -13,11 +13,6 @@
             height: 300px;
             width: auto;
         }
-        #bir-logo {
-            margin-top: 10px;
-            height: 80px;
-            width: auto;
-        }
         button {
             margin-top: 30px;
             margin-bottom: 30px;
@@ -43,15 +38,44 @@
             {{ form.hidden_tag() }}
             <!-- {{ form.csrf_token() }} -->
           {{ form.num_confirmed_covid.label }} {{ form.num_confirmed_covid(class_="form-control") }}
+          <br>
           {{ form.num_pui.label }} {{ form.num_pui(class_="form-control") }}
-          {{ form.num_face_masks.label }} {{ form.num_face_masks(class_="form-control") }}
+          <br>
+          {{ form.status.label }} {{ form.status(class_="form-control") }}
+
+          <br>
+          {{ form.request_supplies.label }} {{ form.request_supplies(class_="form-control") }}
+          <br>
           {{ form.num_covid_kits.label }} {{ form.num_covid_kits(class_="form-control") }}
+          <br>
+          {{ form.num_face_masks.label }} {{ form.num_face_masks(class_="form-control") }}
+
+          <br>
+          {{ form.num_surgical_gloves.label }} {{ form.num_surgical_gloves(class_="form-control") }}
+          <br>
+          {{ form.num_alcohol.label }} {{ form.num_alcohol(class_="form-control") }}
+          <br>
+          {{ form.num_face_shield.label }} {{ form.num_face_shield(class_="form-control") }}
+          <br>
+          {{ form.num_hoods.label }} {{ form.num_hoods(class_="form-control") }}
+          <br>
+          {{ form.num_shoe_covers.label }} {{ form.num_shoe_covers(class_="form-control") }}
+          <br>
           {{ form.num_respirators.label }} {{ form.num_respirators(class_="form-control") }}
+
+          <br>
           {{ form.num_doctors_for_covid.label }} {{ form.num_doctors_for_covid(class_="form-control") }}
+          <br>
           {{ form.num_nurses_for_covid.label }} {{ form.num_nurses_for_covid(class_="form-control") }}
+          <br>
           {{ form.num_medstaff_for_covid.label }} {{ form.num_medstaff_for_covid(class_="form-control") }}
-          {{ form.capacity_quarantine.label }} {{ form.capacity_quarantine() }}
+
+          <br>
+          {{ form.capacity_quarantine.label }} <br> {{ form.capacity_quarantine() }}
+          <br>
+          <br>
           {{ form.notes.label }} {{ form.notes(class_="form-control") }}
+          <br>
           {{ form.submit(class="btn-success") }}
           </form>
           </div>
@@ -59,6 +83,5 @@
           </div>
   </div>
   </body>
-</html>
 
 {% endblock %}

@@ -9,21 +9,22 @@
     <link rel='stylesheet' href="/static/css/style.css">
 
     <style>
-        button {
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-        #text-1 {
-            /* font-weight: bold; */
-            font-size: 40px;
-        }
-        .img-responsive{
-        max-width: 30%;
-        height: auto;
+      button {
+          margin-top: 30px;
+          margin-bottom: 30px;
       }
-      .container{
-        text-align: center;
+      #text-1 {
+          /* font-weight: bold; */
+          font-size: 40px;
       }
+      #text-2 {
+          /* font-weight: bold; */
+          font-size: 30px;
+      }
+      .img-responsive{
+      max-width: 20%;
+      height: auto;
+    }
     </style>
 </head>
 
@@ -31,7 +32,7 @@
     <div class="container">
       <div class='column'>
         <img id="main-logo" class="img-fluid" alt="Responsive image" src='static/img/logo.png'/>
-        <!-- <div id="text-1">Welcome to Project Moses</div> -->
+        <div id="text-2">A free-access health collaboration tool for COVID-19</div>
       </div>
         <div class="container">
           <div class='row'>
@@ -39,6 +40,8 @@
           </div>
           <div class='column'>
             <form method="POST">
+              <br>
+              <br>
               {{form.hidden_tag()}}
               {{form.hospital_user_name.label}}{{form.hospital_user_name(class_="form-control")}}
               {{form.password.label}}{{form.password(class_="form-control")}}

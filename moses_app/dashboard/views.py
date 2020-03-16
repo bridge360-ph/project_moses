@@ -19,21 +19,34 @@ def dashboard():
     sql_query = """
     SELECT
         hospital_name
+        , status
         , hospital_address
+        , hospital_contact_num
+
         , num_confirmed_covid
         , num_pui
-        , num_face_masks
+
+        , request_supplies
         , num_covid_kits
+        , num_face_masks
+        , num_surgical_gloves
+        , num_alcohol
+        , num_face_shield
+        , num_hoods
+        , num_shoe_covers
         , num_respirators
+
         , num_doctors_for_covid
         , num_nurses_for_covid
         , num_medstaff_for_covid
+
         , capacity_quarantine
         , notes
+
         , hospital_website
-        , hospital_contact_num
         , hospital_email
         , timestamp
+
     FROM HospitalInfo a
     LEFT JOIN Hospitals b
     ON a.hospital_id = b.id
@@ -42,20 +55,19 @@ def dashboard():
     table = db.engine.execute(sql_query)
     table = [row for row in table]
 
-    # df = pd.DataFrame(table, columns=['hospital_name', 'hospital_address',
-    #         'hospital_website', 'hospital_contact_num', 'hospital_email',
-    #         'num_confirmed_covid', 'num_pui', 'num_face_masks', 'num_covid_kits',
-    #         'num_respirators', 'num_doctors_for_covid', 'num_nurses_for_covid',
-    #         'num_medstaff_for_covid', 'capacity_quarantine', 'notes',
-    #         'timestamp'])
+    columns = ['Hospital Name', 'Status', 'Address', 'Contact Num',
+    'Num Confirmed COVID', 'Num PUI', 'Supplies Requested', 'Num COVID Kits',
+    'Num Face Mask', 'Num Surgical Gloves', 'Num Alcohol', 'Num Face Shield',
+    'Num Hoods', 'Num Shoe Covers', 'Num Respirators',
+    'Num Doctors Assigned', 'Num Nurses Assigned', 'Num Med Staff Assigned',
+    'Capacity to Quarantine', 'Notes',
+    'Website',  'Email', 'Last Updated']
 
-    columns = ['Hospital Name', 'Address',
-    'Num Confirmed COVID', 'Num PUI', 'Num Face Mask', 'Num COVID Kits',
-    'Num Respirators', 'Num Doctors Handling', 'Num Nurses Handling',
-    'Num Med Staff Handling', 'Capacity to Quarantine', 'Notes',
-            'Website', 'Contact Num', 'Email',
-            'Last Updated']
-    df = pd.DataFrame(table, columns=columns)
+    df = pd.DataFrame(table)
+    print(len(columns))
+    print(df.shape)
+    df.columns = columns
+
 
     df = df.groupby(by='Hospital Name').last().T.reset_index(drop=False)
     df.rename(columns={'index':'Hospital Name'}, inplace=True)

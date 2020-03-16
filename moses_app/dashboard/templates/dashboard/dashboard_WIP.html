@@ -58,8 +58,8 @@
             text-align: justify;
         }
         #text-3 {
-            font-size:200%;
-            padding-top:2%;
+            padding-top: 10px;
+            width: 500px;
             text-align: center;
         }
       </style>
@@ -74,14 +74,13 @@
   <body>
     <div class='container'>
     <div id='text-1'>Dashboard</div>
-    <p id='text-3'>Soon</p>
     <!-- {{ hospital_tables | safe}} -->
     <table id="table">
         <thead>
               <tr>
-                <!-- {% for i in range(num_cols) %}
+                {% for i in range(num_cols) %}
                  <th data-field="{{ i }}"></th>
-                {% endfor %} -->
+                {% endfor %}
             </tr>
         </thead>
     </table>

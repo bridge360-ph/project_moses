@@ -1,8 +1,8 @@
 """
 
-Revision ID: 4526af1dc0dc
+Revision ID: d3111f43c173
 Revises: 
-Create Date: 2020-03-15 15:46:39.010394
+Create Date: 2020-03-17 02:21:23.046171
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4526af1dc0dc'
+revision = 'd3111f43c173'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,13 +31,20 @@ def upgrade():
     )
     op.create_index(op.f('ix_hospitals_hospital_user_name'), 'hospitals', ['hospital_user_name'], unique=True)
     op.create_table('hospitalinfo',
-    sa.Column('hospital_id', sa.Integer(), nullable=True),
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('timestamp', sa.String(length=64), nullable=True),
+    sa.Column('status', sa.String(length=64), nullable=True),
+    sa.Column('hospital_id', sa.Integer(), nullable=True),
     sa.Column('num_confirmed_covid', sa.Integer(), nullable=True),
     sa.Column('num_pui', sa.Integer(), nullable=True),
-    sa.Column('num_face_masks', sa.Integer(), nullable=True),
+    sa.Column('request_supplies', sa.String(length=64), nullable=True),
     sa.Column('num_covid_kits', sa.Integer(), nullable=True),
+    sa.Column('num_face_masks', sa.Integer(), nullable=True),
+    sa.Column('num_surgical_gloves', sa.Integer(), nullable=True),
+    sa.Column('num_alcohol', sa.Integer(), nullable=True),
+    sa.Column('num_face_shield', sa.Integer(), nullable=True),
+    sa.Column('num_hoods', sa.Integer(), nullable=True),
+    sa.Column('num_shoe_covers', sa.Integer(), nullable=True),
     sa.Column('num_respirators', sa.Integer(), nullable=True),
     sa.Column('num_doctors_for_covid', sa.Integer(), nullable=True),
     sa.Column('num_nurses_for_covid', sa.Integer(), nullable=True),

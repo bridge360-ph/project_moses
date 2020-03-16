@@ -44,17 +44,26 @@ class Hospitals(db.Model, UserMixin):
 
 class HospitalInfo(db.Model):
     __tablename__ = 'hospitalinfo'
-    # relationship with registration
-    hospital_id = db.Column(db.Integer, db.ForeignKey('hospitals.id'))
 
     id = db.Column(db.Integer, primary_key=True) # unique identifier for the row
+
     timestamp = db.Column(db.String(64))
+    status = db.Column(db.String(64))
+
+    # relationship with registration
+    hospital_id = db.Column(db.Integer, db.ForeignKey('hospitals.id'))
 
     num_confirmed_covid = db.Column(db.Integer())
     num_pui = db.Column(db.Integer())
 
-    num_face_masks = db.Column(db.Integer())
+    request_supplies = db.Column(db.String(64))
     num_covid_kits = db.Column(db.Integer())
+    num_face_masks = db.Column(db.Integer())
+    num_surgical_gloves = db.Column(db.Integer())
+    num_alcohol = db.Column(db.Integer())
+    num_face_shield = db.Column(db.Integer())
+    num_hoods = db.Column(db.Integer())
+    num_shoe_covers = db.Column(db.Integer())
     num_respirators = db.Column(db.Integer())
 
     num_doctors_for_covid = db.Column(db.Integer())
@@ -64,18 +73,28 @@ class HospitalInfo(db.Model):
     capacity_quarantine = db.Column(db.String(64))
     notes = db.Column(db.String())
 
-    def __init__(self, timestamp, hospital_id, num_confirmed_covid, num_pui,
-                num_face_masks, num_covid_kits, num_respirators,
+    def __init__(self, timestamp, hospital_id, status, num_confirmed_covid, num_pui,
+                request_supplies, num_covid_kits, num_face_masks,
+                num_surgical_gloves, num_alcohol, num_face_shield,
+                num_hoods, num_shoe_covers, num_respirators,
                 num_doctors_for_covid, num_nurses_for_covid, num_medstaff_for_covid,
                 capacity_quarantine, notes):
 
         self.timestamp = timestamp
+        self.status = status
+
         self.hospital_id = hospital_id
         self.num_confirmed_covid = num_confirmed_covid
         self.num_pui = num_pui
 
-        self.num_face_masks = num_face_masks
+        self.request_supplies = request_supplies
         self.num_covid_kits = num_covid_kits
+        self.num_face_masks = num_face_masks
+        self.num_surgical_gloves = num_surgical_gloves
+        self.num_alcohol = num_alcohol
+        self.num_face_shield = num_face_shield
+        self.num_hoods = num_hoods
+        self.num_shoe_covers = num_shoe_covers
         self.num_respirators = num_respirators
 
         self.num_doctors_for_covid = num_doctors_for_covid

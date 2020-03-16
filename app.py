@@ -11,9 +11,10 @@ from moses_app.forms import LoginForm, RegistrationForm
 def index():
     return render_template('index.html')
 
-@app.route('/table')
-def table():
-    return render_template('table.html')
+
+@app.route('/public_info')
+def public_info():
+    return render_template('public_info.html')
 
 @app.route('/logout')
 @login_required
